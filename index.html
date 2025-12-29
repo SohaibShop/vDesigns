@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERTEX DESIGNS | Agence de Services Numériques</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+
+        [lang="ar"] {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .diamond-gradient-text {
+            background: linear-gradient(90deg, #06b6d4, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-blob {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+            z-index: -1;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(147, 51, 234, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link {
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-link.active-tab {
+            background-color: #9333ea !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+        }
+
+        select option { background-color: #1a1a1a !important; color: white !important; }
+
+        .page-content { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .page-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1); padding: 5px 10px;
+            border-radius: 20px; font-size: 0.75rem; font-weight: bold;
+            cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
+        }
+
+        /* Fixed Logo sizes for mobile/desktop */
+        .logo-img { height: 50px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
+        @media (min-width: 768px) {
+            .logo-img { height: 70px; }
+        }
+        .logo-img:hover { transform: scale(1.05); }
+
+        .portfolio-item { overflow: hidden; border-radius: 1rem; position: relative; background: #111; }
+        .portfolio-item img { transition: transform 0.5s ease; }
+        .portfolio-item:hover img { transform: scale(1.05); }
+
+        .portfolio-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            opacity: 0; transition: opacity 0.3s;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        
+        .section-divider {
+            height: 1px; background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.3), transparent);
+            margin: 4rem 0;
+        }
+
+        .return-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        .return-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #9333ea;
+            transform: translateX(-5px);
+        }
+
+        /* Mobile Header Fix */
+        .mobile-header-scroll {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+            padding-bottom: 5px;
+        }
+        .mobile-header-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect py-1 md:py-2">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <div class="cursor-pointer flex items-center shrink-0" onclick="navigateTo('home')">
+                <img src="images/logo.png" alt="VERTEX DESIGNS Logo" class="logo-img">
+            </div>
+            
+            <!-- Desktop/Tablet Menu -->
+            <div class="hidden lg:flex space-x-4 text-sm font-medium uppercase tracking-widest items-center">
+                <a href="javascript:void(0)" id="nav-btn-home-desktop" onclick="navigateTo('home')" class="nav-link active-tab" data-key="nav-home">Accueil</a>
+                <a href="javascript:void(0)" id="nav-btn-portfolio-desktop" onclick="navigateTo('portfolio')" class="nav-link" data-key="nav-portfolio">Mon Travail</a>
+                <a href="javascript:void(0)" id="nav-btn-tarifs-desktop" onclick="navigateTo('tarifs')" class="nav-link" data-key="nav-prices">Liste des Prix</a>
+                <a href="#contact" onclick="navigateTo('home')" class="px-5 py-2 bg-purple-600 rounded-full hover:bg-purple-700 transition" data-key="nav-contact">Contact</a>
+                <button onclick="toggleLanguage()" class="lang-btn">AR/FR</button>
+            </div>
+
+            <!-- Mobile Menu (Scrollable horizontal) -->
+            <div class="lg:hidden flex items-center gap-2 overflow-hidden">
+                <div class="mobile-header-scroll flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight">
+                    <a href="javascript:void(0)" id="nav-btn-home" onclick="navigateTo('home')" class="nav-link active-tab" data-key="nav-home">Accueil</a>
+                    <a href="javascript:void(0)" id="nav-btn-portfolio" onclick="navigateTo('portfolio')" class="nav-link" data-key="nav-portfolio">Mon Travail</a>
+                    <a href="javascript:void(0)" id="nav-btn-tarifs" onclick="navigateTo('tarifs')" class="nav-link" data-key="nav-prices">Prix</a>
+                </div>
+                <button onclick="toggleLanguage()" class="lang-btn shrink-0">AR/FR</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE : ACCUEIL -->
+    <div id="home" class="page-content active">
+        <!-- Hero Section -->
+        <section id="accueil" class="relative min-h-screen flex items-center pt-24 md:pt-20">
+            <div class="hero-blob top-0 left-[-10%]"></div>
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-8xl font-black mb-6 leading-tight">
+                    <span data-key="hero-title-1">Welcome to</span><br>
+                    <span class="gradient-text" data-key="hero-title-2">VERTEX DESIGNS</span>
+                </h1>
+                <p class="text-gray-400 text-base md:text-xl max-w-2xl mx-auto mb-10" data-key="hero-desc">
+                    Graphisme, Développement Web et Présentations Professionnelles. Des solutions digitales créatives pour booster votre projet.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="#services" class="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition" data-key="btn-services">Nos Services</a>
+                    <a href="javascript:void(0)" onclick="navigateTo('portfolio')" class="px-8 py-4 glass-effect font-bold rounded-lg hover:bg-white/10 transition" data-key="nav-portfolio">Mon Travail</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-[#0a0a0a]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-16" data-key="services-title">Mes Services Professionnels</h2>
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="glass-effect p-8 rounded-2xl">
+                        <i class="fas fa-palette text-3xl text-purple-500 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4" data-key="s1-title">Design Graphique</h3>
+                        <p class="text-gray-400 text-sm" data-key="s1-desc">Logos, flyers et cartes de visite professionnels.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-2xl">
+                        <i class="fas fa-code text-3xl text-blue-500 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4" data-key="s2-title">Développement Web</h3>
+                        <p class="text-gray-400 text-sm" data-key="s2-desc">Sites vitrines et boutiques e-commerce responsives.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-2xl">
+                        <i class="fas fa-file-powerpoint text-3xl text-pink-500 mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4" data-key="s3-title">Présentations</h3>
+                        <p class="text-gray-400 text-sm" data-key="s3-desc">Conception de slides impactantes pour vos réunions.</p>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-8">
+                    <button onclick="navigateTo('tarifs')" class="px-10 py-4 bg-purple-600 rounded-full font-bold hover:bg-purple-700 transition flex items-center gap-3 group" data-key="nav-prices">
+                        <i class="fas fa-tags transition group-hover:scale-110"></i>
+                        Liste des Prix
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="glass-effect p-6 md:p-10 rounded-3xl">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center" data-key="contact-title">Prêt à commencer ?</h2>
+                    <form id="contactForm" onsubmit="sendToWhatsApp(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" id="form-name" data-placeholder="input-name" placeholder="Nom" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-purple-500">
+                            <input type="tel" id="form-phone" data-placeholder="input-phone" placeholder="Numéro de téléphone" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-purple-500">
+                        </div>
+                        <select id="form-service" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none">
+                            <option value="" disabled selected data-key="opt-default">Type de service</option>
+                            <option value="Design Graphique" data-key="opt-1">Design Graphique</option>
+                            <option value="Développement Web" data-key="opt-2">Développement Web</option>
+                            <option value="Présentation Professionnelle" data-key="opt-3">Présentation Pro</option>
+                            <option value="Golden Pack" data-key="opt-gold">Golden Pack</option>
+                            <option value="Diamond Pack" data-key="opt-4">Diamond Pack (Full Service)</option>
+                        </select>
+                        <textarea id="form-message" data-placeholder="input-msg" placeholder="Décrivez votre projet..." rows="4" required class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white outline-none focus:border-purple-500"></textarea>
+                        <button type="submit" class="w-full py-4 bg-purple-600 rounded-xl font-bold hover:bg-purple-700 transition flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span data-key="btn-send">Envoyer ma demande</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE : PORTFOLIO / MON TRAVAIL -->
+    <div id="portfolio" class="page-content">
+        <section class="pt-32 pb-24 min-h-screen">
+            <div class="container mx-auto px-6">
+                <!-- Return Button -->
+                <button onclick="navigateTo('home')" class="return-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span data-key="btn-return">Retour à l'Accueil</span>
+                </button>
+
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter">
+                        <span data-key="portfolio-title-1">Mon</span> <span class="text-purple-500" data-key="portfolio-title-2">Portfolio</span>
+                    </h2>
+                    <p class="text-gray-400" data-key="portfolio-subtitle">Découvrez quelques-unes de mes réalisations récentes.</p>
+                </div>
+
+                <!-- SECTION : AFFICHES -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-scroll text-purple-500"></i>
+                        <span data-key="port-affiches">Mes Affiches</span>
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="portfolio-item aspect-[3/4]">
+                            <img src="images/offre emploi .jpg" alt="Affiche Publicitaire" class="w-full h-full object-cover">
+                            <div class="portfolio-overlay">
+                                <h3 class="text-xl font-bold mb-2">Design Professionnel</h3>
+                                <p class="text-gray-300 text-sm">Visuel marketing optimisé pour la communication.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item aspect-[3/4]">
+                            <img src="images/VERTEX AFFICHE.png" alt="Best Affiche" class="w-full h-full object-cover">
+                            <div class="portfolio-overlay">
+                                <h3 class="text-xl font-bold mb-2">Best Affiche</h3>
+                                <p class="text-gray-300 text-sm">Design graphique événementiel premium.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item aspect-[3/4]">
+                            <img src="images/DMASS AFFICHE.png" alt="DMASS Affiche" class="w-full h-full object-cover">
+                            <div class="portfolio-overlay">
+                                <h3 class="text-xl font-bold mb-2">DMASS Affiche</h3>
+                                <p class="text-gray-300 text-sm">Conception publicitaire professionnelle.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- SECTION : BANNIÈRES -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-ad text-pink-500"></i>
+                        <span data-key="port-banners">Mes Bannières</span>
+                    </h3>
+                    <div class="grid grid-cols-1 gap-8">
+                        <div class="portfolio-item h-64 md:h-80">
+                            <img src="images/banner3.jpg" alt="Bannière Corporate" class="w-full h-full object-cover object-center">
+                            <div class="portfolio-overlay">
+                                <h3 class="text-xl font-bold">Bannière Stratégique</h3>
+                                <p class="text-gray-300">Format panoramique pour communication digitale.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item h-64 md:h-80">
+                            <img src="images/baner.jpeg" alt="Banner Dmass" class="w-full h-full object-cover object-center">
+                            <div class="portfolio-overlay">
+                                <h3 class="text-xl font-bold">Bannière Promotionnelle</h3>
+                                <p class="text-gray-300">Visuel marketing impactant pour campagnes publicitaires.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- SECTION : DESIGNS -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-bezier-curve text-blue-500"></i>
+                        <span data-key="port-designs">Mes Designs</span>
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="portfolio-item aspect-square">
+                            <img src="images/1.jpeg" alt="Design Concept 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-item aspect-square">
+                            <img src="images/2.jpeg" alt="Design Concept 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-item aspect-square">
+                            <img src="images/3.jpeg" alt="Design Concept 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-item aspect-square">
+                            <img src="images/logo3.jpg" alt="Design Concept 4" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- SECTION : DOCUMENTS -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-file-pdf text-red-500"></i>
+                        <span data-key="port-docs">Documents & PDF</span>
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <a href="Projet pie .pptx" target="_blank" class="glass-effect p-6 rounded-2xl flex items-center justify-between hover:bg-white/10 transition group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-file-powerpoint text-orange-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold group-hover:text-orange-400 transition" data-key="doc-title">My Presentation</h4>
+                                    <p class="text-xs text-gray-500" data-key="doc-desc">Présentation Entrepreneuriale</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white transition"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-16 text-center">
+                    <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="px-10 py-4 bg-purple-600 rounded-full font-bold hover:bg-purple-700 transition" data-key="btn-order-custom">Démarrer un projet ensemble</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE : TARIFS DÉTAILLÉS -->
+    <div id="tarifs" class="page-content">
+        <section class="pt-32 pb-24 min-h-screen">
+            <div class="container mx-auto px-6">
+                <!-- Return Button -->
+                <button onclick="navigateTo('home')" class="return-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span data-key="btn-return">Retour à l'Accueil</span>
+                </button>
+
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter">
+                        <span data-key="price-title-1">Catalogue des</span> <span class="text-purple-500" data-key="price-title-2">Tarifs</span>
+                    </h2>
+                    <p class="text-gray-400" data-key="price-subtitle">Des prix transparents pour des prestations de haute qualité.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Graphisme -->
+                    <div class="glass-effect p-8 rounded-3xl border-t-4 border-purple-500 flex flex-col">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-pen-nib text-purple-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" data-key="p1-main-title">Design Graphique</h3>
+                        </div>
+                        <div class="space-y-6 flex-grow">
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Logo Simple</p><p class="text-xs text-gray-400">Fichiers source inclus</p></div>
+                                <span class="text-purple-400 font-bold">30 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Flyer A5</p><p class="text-xs text-gray-400">Design Recto</p></div>
+                                <span class="text-purple-400 font-bold">50 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Carte de Visite</p><p class="text-xs text-gray-400">Recto-Verso</p></div>
+                                <span class="text-purple-400 font-bold">60 MAD</span>
+                            </div>
+                        </div>
+                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-purple-500/20 border border-purple-500/40 rounded-xl font-bold hover:bg-purple-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
+                    </div>
+
+                    <!-- Présentations -->
+                    <div class="glass-effect p-8 rounded-3xl border-t-4 border-pink-500 flex flex-col">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-desktop text-pink-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" data-key="p2-main-title">Présentations</h3>
+                        </div>
+                        <div class="space-y-6 flex-grow">
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Pack Base (5 Slides)</p><p class="text-xs text-gray-400">Conception modèle</p></div>
+                                <span class="text-pink-400 font-bold">35 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Pack Standard (10 Slides)</p><p class="text-xs text-gray-400">Design & Icônes</p></div>
+                                <span class="text-pink-400 font-bold">45 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Pack Expert (30+ Slides)</p><p class="text-xs text-gray-400">Optimisation complète</p></div>
+                                <span class="text-pink-400 font-bold">60 MAD</span>
+                            </div>
+                        </div>
+                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-pink-500/20 border border-pink-500/40 rounded-xl font-bold hover:bg-pink-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
+                    </div>
+
+                    <!-- Web -->
+                    <div class="glass-effect p-8 rounded-3xl border-t-4 border-blue-500 flex flex-col">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-globe text-blue-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" data-key="p3-main-title">Sites Web</h3>
+                        </div>
+                        <div class="space-y-6 flex-grow">
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold" data-key="web-p1">Site One-Page</p><p class="text-xs text-gray-400" data-key="web-d1">Vitrine / Portfolio</p></div>
+                                <span class="text-blue-400 font-bold">250 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold" data-key="web-p2">Site Business</p><p class="text-xs text-gray-400" data-key="web-d2">Multi-pages & SEO</p></div>
+                                <span class="text-blue-400 font-bold">300 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold" data-key="web-p3">Site E-commerce</p><p class="text-xs text-gray-400" data-key="web-d3">Boutique complète</p></div>
+                                <span class="text-blue-400 font-bold">300 MAD</span>
+                            </div>
+                        </div>
+                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-blue-500/20 border border-purple-500/40 rounded-xl font-bold hover:bg-blue-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
+                    </div>
+                </div>
+
+                <!-- PACKS PREMIUM -->
+                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- GOLDEN PACK -->
+                    <div class="relative p-[2px] rounded-3xl bg-gradient-to-r from-yellow-600 via-yellow-200 to-yellow-600 overflow-hidden shadow-[0_0_30px_rgba(251,191,36,0.15)]">
+                        <div class="bg-[#0a0a0a] p-8 rounded-[22px] h-full flex flex-col">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-crown text-yellow-500 text-2xl"></i>
+                                <h3 class="text-2xl font-black gold-gradient-text uppercase tracking-tighter" data-key="gold-title">Golden Pack</h3>
+                            </div>
+                            <p class="text-gray-400 mb-6 text-sm leading-relaxed" data-key="gold-desc">La solution ultime pour lancer votre marque. Ce pack fusionne notre expertise en Design et en Développement Web.</p>
+                            <ul class="space-y-3 mb-8 flex-grow">
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-yellow-500"></i> <span data-key="gold-feat-1">Logo + Affiche</span></li>
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-yellow-500"></i> <span data-key="gold-feat-2">Site Web E-commerce ou Business</span></li>
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-yellow-500"></i> <span data-key="gold-feat-3">Bannière professionnelle</span></li>
+                            </ul>
+                            <div class="text-center">
+                                <p class="text-3xl font-black text-white mb-4">350 <span class="text-yellow-500 text-xl">MAD</span></p>
+                                <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="w-full py-3 bg-yellow-500 text-black font-black rounded-xl hover:bg-yellow-400 transition uppercase text-[10px] tracking-widest" data-key="btn-order-gold">Commander le Pack</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DIAMOND PACK -->
+                    <div class="relative p-[2px] rounded-3xl bg-gradient-to-r from-cyan-500 via-white to-blue-500 overflow-hidden shadow-[0_0_40px_rgba(6,182,212,0.3)]">
+                        <div class="bg-[#0a0a0a] p-8 rounded-[22px] h-full flex flex-col">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-gem text-cyan-400 text-2xl"></i>
+                                <h3 class="text-2xl font-black diamond-gradient-text uppercase tracking-tighter" data-key="diamond-title">Diamond Pack</h3>
+                            </div>
+                            <p class="text-gray-400 mb-6 text-sm leading-relaxed" data-key="diamond-desc">L'expérience prestige absolue. Un mix total de web design, identité visuelle complète et assistance illimitée.</p>
+                            <ul class="space-y-3 mb-8 flex-grow">
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-cyan-400"></i> <span data-key="diamond-feat-1">Site Web complète</span></li>
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-cyan-400"></i> <span data-key="diamond-feat-2">Logo + Affiche + carte visit</span></li>
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-cyan-400"></i> <span data-key="diamond-feat-3">Support Prioritaire 24h/24 & 7j/7</span></li>
+                                <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-cyan-400"></i> <span data-key="diamond-feat-4">Maintenance & Updates incluses</span></li>
+                            </ul>
+                            <div class="text-center">
+                                <p class="text-3xl font-black text-white mb-4">500 <span class="text-cyan-400 text-xl">MAD</span></p>
+                                <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="w-full py-3 bg-cyan-500 text-black font-black rounded-xl hover:bg-cyan-400 transition uppercase text-[10px] tracking-widest" data-key="btn-order-diamond">Commander l'Excellence</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500 mb-4">&copy; 2024 VERTEX DESIGNS. <span data-key="footer-rights">Tous droits réservés.</span></p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                "nav-home": "Accueil", "nav-portfolio": "Portfolio", "nav-prices": "Tarifs", "nav-contact": "Contact",
+                "btn-return": "Retour à l'Accueil",
+                "hero-title-1": "Welcome to", "hero-title-2": "VERTEX DESIGNS",
+                "hero-desc": "Graphisme, Développement Web et Présentations Professionnelles. Des solutions digitales créatives pour booster votre projet.",
+                "services-title": "Mes Services Professionnels", "s1-title": "Design Graphique", "s2-title": "Développement Web", "s3-title": "Présentations",
+                "contact-title": "Prêt à commencer ?", "btn-send": "Envoyer ma demande", "portfolio-title-1": "Mon", "portfolio-title-2": "Portfolio",
+                "port-affiches": "Mes Affiches", "port-banners": "Mes Bannières", "port-designs": "Mes Designs", "port-docs": "Documents & PDF",
+                "doc-title": "My Presentation", "doc-desc": "Présentation Entrepreneuriale",
+                "gold-title": "Golden Pack", "gold-desc": "La solution ultime pour lancer votre marque. Ce pack fusionne notre expertise en Design et en Développement Web.",
+                "gold-feat-1": "Logo + Affiche", "gold-feat-2": "Site Web E-commerce ou Business", "gold-feat-3": "Bannière professionnelle",
+                "diamond-title": "Diamond Pack", "diamond-desc": "L'expérience prestige absolue. Un mix total de web design, identité visuelle complète et assistance illimitée.",
+                "diamond-feat-1": "Site Web complète", "diamond-feat-2": "Logo + Affiche + carte visit", "diamond-feat-3": "Support Prioritaire 24h/24 & 7j/7", "diamond-feat-4": "Maintenance & Updates incluses",
+                "gold-price-label": "Prix Spécial", "btn-order-gold": "Commander le Pack", "btn-order-diamond": "Commander l'Excellence", "footer-rights": "Tous droits réservés.",
+                "input-name": "Nom", "input-phone": "Numéro de téléphone", "input-msg": "Décrivez votre projet...", "opt-default": "Type de service", "opt-gold": "Golden Pack",
+                "web-p1": "Site One-Page", "web-d1": "Vitrine / Portfolio", "web-p2": "Site Business", "web-d2": "Multi-pages & SEO", "web-p3": "Site E-commerce", "web-d3": "Boutique complète"
+            },
+            ar: {
+                "nav-home": "الرئيسية", "nav-portfolio": "أعمالي", "nav-prices": "الأسعار", "nav-contact": "اتصل بنا",
+                "btn-return": "العودة إلى الرئيسية",
+                "hero-title-1": "مرحباً بكم في", "hero-title-2": "فيرتكس ديزاينز",
+                "hero-desc": "جرافيك ديزاين، تطوير المواقع، وعروض تقديمية احترافية. حلول رقمية إبداعية لتعزيز مشروعك.",
+                "services-title": "خدماتي الاحترافية", "s1-title": "تصميم الجرافيك", "s2-title": "تطوير الويب", "s3-title": "العروض التقديمية",
+                "contact-title": "هل أنت مستعد للبدء؟", "btn-send": "إرسال الطلب", "portfolio-title-1": "معرض", "portfolio-title-2": "أعمالي",
+                "port-affiches": "ملصقاتي", "port-banners": "لافتات إعلانية", "port-designs": "تصاميمي", "port-docs": "ملفات و PDF",
+                "doc-title": "عرضي التقديمي", "doc-desc": "مشروع ريادي",
+                "gold-title": "الباقة الذهبية", "gold-desc": "الحل الأمثل لإطلاق علامتك التجارية. تجمع هذه الباقة بين خبرتنا في التصميم وتطوير المواقع.",
+                "gold-feat-1": "شعار + ملصق", "gold-feat-2": "متجر إلكتروني أو موقع أعمال", "gold-feat-3": "لافتة احترافية",
+                "diamond-title": "الباقة الماسية", "diamond-desc": "تجربة الفخامة المطلقة. مزيج شامل من تصميم المواقع والهوية البصرية مع دعم فني دائم.",
+                "diamond-feat-1": "موقع ويب كامل", "diamond-feat-2": "شعار + ملصق + بطاقة عمل", "diamond-feat-3": "دعم فني ذو أولوية 24/7", "diamond-feat-4": "الصيانة والتحديثات مشمولة",
+                "gold-price-label": "سعر خاص", "btn-order-gold": "طلب الباقة الذهبية", "btn-order-diamond": "طلب التميز الماسي", "footer-rights": "جميع الحقوق محفوظة.",
+                "input-name": "الاسم", "input-phone": "رقم الهاتف", "input-msg": "صف مشروعك...", "opt-default": "نوع الخدمة", "opt-gold": "الباقة الذهبية",
+                "web-p1": "موقع صفحة واحدة", "web-d1": "موقع تعريفي / بورتفوليو", "web-p2": "موقع أعمال", "web-d2": "متعدد الصفحات و SEO", "web-p3": "متجر إلكتروني", "web-d3": "متجر كامل"
+            }
+        };
+
+        let currentLang = 'fr';
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'ar' : 'fr';
+            document.documentElement.lang = currentLang; document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
+            });
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[currentLang][key]) el.placeholder = translations[currentLang][key];
+            });
+        }
+
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) { 
+                targetPage.classList.add('active'); 
+                window.scrollTo(0, 0); 
+            }
+            // Update active state for both mobile and desktop menus
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active-tab'));
+            
+            const activeBtnMob = document.getElementById('nav-btn-' + pageId);
+            if(activeBtnMob) activeBtnMob.classList.add('active-tab');
+            
+            const activeBtnDesk = document.getElementById('nav-btn-' + pageId + '-desktop');
+            if(activeBtnDesk) activeBtnDesk.classList.add('active-tab');
+        }
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const phoneInput = document.getElementById('form-phone').value;
+            const service = document.getElementById('form-service').value;
+            const message = document.getElementById('form-message').value;
+            const myPhone = "212777467304"; 
+            const fullMessage = `*Nouvelle Demande - VERTEX DESIGNS*\n\n*Nom:* ${name}\n*Téléphone:* ${phoneInput}\n*Service:* ${service}\n*Détails:* ${message}`;
+            window.open(`https://wa.me/${myPhone}?text=${encodeURIComponent(fullMessage)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
