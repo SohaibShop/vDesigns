@@ -181,7 +181,7 @@
                     <span class="gradient-text" data-key="hero-title-2">VERTEX DESIGNS</span>
                 </h1>
                 <p class="text-gray-400 text-base md:text-xl max-w-2xl mx-auto mb-10" data-key="hero-desc">
-                    Graphisme, Développement Web et Présentations Professionnelles. Des solutions digitales créatives pour booster votre projet.
+                    Graphisme et Développement Web. Des solutions digitales créatives pour booster votre projet.
                 </p>
                 <div class="flex flex-col md:flex-row justify-center gap-4">
                     <a href="#services" class="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition" data-key="btn-services">Nos Services</a>
@@ -193,7 +193,7 @@
         <section id="services" class="py-24 bg-[#0a0a0a]">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-16" data-key="services-title">Mes Services Professionnels</h2>
-                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="grid md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
                     <div class="glass-effect p-8 rounded-2xl">
                         <i class="fas fa-palette text-3xl text-purple-500 mb-6"></i>
                         <h3 class="text-xl font-bold mb-4" data-key="s1-title">Design Graphique</h3>
@@ -203,11 +203,6 @@
                         <i class="fas fa-code text-3xl text-blue-500 mb-6"></i>
                         <h3 class="text-xl font-bold mb-4" data-key="s2-title">Développement Web</h3>
                         <p class="text-gray-400 text-sm" data-key="s2-desc">Sites vitrines et boutiques e-commerce responsives.</p>
-                    </div>
-                    <div class="glass-effect p-8 rounded-2xl">
-                        <i class="fas fa-file-powerpoint text-3xl text-pink-500 mb-6"></i>
-                        <h3 class="text-xl font-bold mb-4" data-key="s3-title">Présentations</h3>
-                        <p class="text-gray-400 text-sm" data-key="s3-desc">Conception de slides impactantes pour vos réunions.</p>
                     </div>
                 </div>
                 <div class="flex justify-center mt-8">
@@ -232,7 +227,6 @@
                             <option value="" disabled selected data-key="opt-default">Type de service</option>
                             <option value="Design Graphique" data-key="opt-1">Design Graphique</option>
                             <option value="Développement Web" data-key="opt-2">Développement Web</option>
-                            <option value="Présentation Professionnelle" data-key="opt-3">Présentation Pro</option>
                             <option value="Golden Pack" data-key="opt-gold">Golden Pack</option>
                             <option value="Diamond Pack" data-key="opt-4">Diamond Pack (Full Service)</option>
                         </select>
@@ -347,30 +341,6 @@
 
                 <div class="section-divider"></div>
 
-                <!-- SECTION : DOCUMENTS -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
-                        <i class="fas fa-file-pdf text-red-500"></i>
-                        <span data-key="port-docs">Documents & PDF</span>
-                    </h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <a href="Projet pie .pptx" target="_blank" class="glass-effect p-6 rounded-2xl flex items-center justify-between hover:bg-white/10 transition group">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-file-powerpoint text-orange-500"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold group-hover:text-orange-400 transition" data-key="doc-title">My Presentation</h4>
-                                    <p class="text-xs text-gray-500" data-key="doc-desc">Présentation Entrepreneuriale</p>
-                                </div>
-                            </div>
-                            <i class="fas fa-external-link-alt text-gray-500 group-hover:text-white transition"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="section-divider"></div>
-
                 <!-- SECTION : SITES WEB -->
                 <div class="mb-12">
                     <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
@@ -378,7 +348,6 @@
                         <span data-key="port-websites">Mes Sites Web</span>
                     </h3>
                     <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Site One-Page -->
                         <div class="group relative overflow-hidden rounded-2xl glass-effect">
                             <a href="https://sohaibshop.github.io/4you/" target="_blank" class="block">
                                 <div class="aspect-video bg-white/5 flex items-center justify-center overflow-hidden">
@@ -396,7 +365,6 @@
                                 </a>
                             </div>
                         </div>
-                        <!-- Site E-commerce (Thumbnail set to banner3.jpg) -->
                         <div class="group relative overflow-hidden rounded-2xl glass-effect">
                             <a href="https://sohaibshop.github.io/vDesigns/" target="_blank" class="block">
                                 <div class="aspect-video bg-white/5 flex items-center justify-center overflow-hidden">
@@ -441,7 +409,7 @@
                 </div>
 
                 <!-- GRILLE PRINCIPALE DES TARIFS -->
-                <div class="grid lg:grid-cols-3 gap-8 mb-12">
+                <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
                     <!-- DESIGN GRAPHIQUE -->
                     <div class="glass-effect p-8 rounded-3xl border-t-4 border-purple-500 flex flex-col">
                         <div class="flex items-center gap-4 mb-8">
@@ -490,31 +458,6 @@
                             </div>
                         </div>
                         <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-blue-500/20 border border-blue-500/40 rounded-xl font-bold hover:bg-blue-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
-                    </div>
-
-                    <!-- PRÉSENTATIONS -->
-                    <div class="glass-effect p-8 rounded-3xl border-t-4 border-pink-500 flex flex-col">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-desktop text-pink-500"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold" data-key="p2-main-title">Présentations</h3>
-                        </div>
-                        <div class="space-y-6 flex-grow">
-                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
-                                <div><p class="font-bold">Pack Base (5 Slides)</p><p class="text-xs text-gray-400">Design Professionnel</p></div>
-                                <span class="text-pink-400 font-bold">40 MAD</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
-                                <div><p class="font-bold">Pack Standard (10 Slides)</p><p class="text-xs text-gray-400">Design & Icônes</p></div>
-                                <span class="text-pink-400 font-bold">70 MAD</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
-                                <div><p class="font-bold">Pack Expert (30+ Slides)</p><p class="text-xs text-gray-400">Optimisation complète</p></div>
-                                <span class="text-pink-400 font-bold">100 MAD</span>
-                            </div>
-                        </div>
-                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-pink-500/20 border border-pink-500/40 rounded-xl font-bold hover:bg-pink-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
                     </div>
                 </div>
 
@@ -582,13 +525,12 @@
                 "nav-home": "Accueil", "nav-portfolio": "Portfolio", "nav-prices": "Tarifs", "nav-contact": "Contact",
                 "btn-return": "Retour à l'Accueil",
                 "hero-title-1": "Welcome to", "hero-title-2": "VERTEX DESIGNS",
-                "hero-desc": "Graphisme, Développement Web et Présentations Professionnelles. Des solutions digitales créatives pour booster votre projet.",
-                "services-title": "Mes Services Professionnels", "s1-title": "Design Graphique", "s2-title": "Développement Web", "s3-title": "Présentations",
+                "hero-desc": "Graphisme et Développement Web. Des solutions digitales créatives pour booster votre projet.",
+                "services-title": "Mes Services Professionnels", "s1-title": "Design Graphique", "s2-title": "Développement Web",
                 "contact-title": "Prêt à commencer ?", "btn-send": "Envoyer ma demande", "portfolio-title-1": "Mon", "portfolio-title-2": "Portfolio",
                 "port-menus": "Mes Designs de Menu", "view-project": "Voir le projet",
-                "port-affiches": "Mes Affiches", "port-banners": "Mes Bannières", "port-designs": "Mes Designs de logo", "port-docs": "Documents & PDF",
+                "port-affiches": "Mes Affiches", "port-banners": "Mes Bannières", "port-designs": "Mes Designs de logo",
                 "port-websites": "Mes Sites Web",
-                "doc-title": "My Presentation", "doc-desc": "Présentation Entrepreneuriale",
                 "gold-title": "Golden Pack", "gold-desc": "La solution ultime pour lancer votre marque. Ce pack fusionne notre expertise en Design et en Développement Web.",
                 "gold-feat-1": "Logo + Affiche", "gold-feat-2": "Site Web E-commerce ou Business", "gold-feat-3": "Bannière professionnelle",
                 "diamond-title": "Diamond Pack", "diamond-desc": "L'expérience prestige absolue. Un mix total de web design, identité visuelle complète et assistance illimitée.",
@@ -601,13 +543,12 @@
                 "nav-home": "الرئيسية", "nav-portfolio": "أعمالي", "nav-prices": "الأسعار", "nav-contact": "اتصل بنا",
                 "btn-return": "العودة إلى الرئيسية",
                 "hero-title-1": "مرحباً بكم في", "hero-title-2": "فيرتكس ديزاينز",
-                "hero-desc": "جرافيك ديزاين، تطوير المواقع، وعروض تقديمية احترافية. حلول رقمية إبداعية لتعزيز مشروعك.",
-                "services-title": "خدماتي الاحترافية", "s1-title": "تصميم الجرافيك", "s2-title": "تطوير الويب", "s3-title": "العروض التقديمية",
+                "hero-desc": "جرافيك ديزاين وتطوير المواقع. حلول رقمية إبداعية لتعزيز مشروعك.",
+                "services-title": "خدماتي الاحترافية", "s1-title": "تصميم الجرافيك", "s2-title": "تطوير الويب",
                 "contact-title": "هل أنت مستعد للبدء؟", "btn-send": "إرسال الطلب", "portfolio-title-1": "معرض", "portfolio-title-2": "أعمالي",
                 "port-menus": "تصاميم المنيو", "view-project": "عرض المشروع",
-                "port-affiches": "ملصقاتي", "port-banners": "لافتات إعلانية", "port-designs": "تصاميم الشعار", "port-docs": "ملفات و PDF",
+                "port-affiches": "ملصقاتي", "port-banners": "لافتات إعلانية", "port-designs": "تصاميم الشعار",
                 "port-websites": "مواقعي الإلكترونية",
-                "doc-title": "عرضي التقديمي", "doc-desc": "مشروع ريادي",
                 "gold-title": "الباقة الذهبية", "gold-desc": "الحل الأمثل لإطلاق علامتك التجارية. تجمع هذه الباقة بين خبرتنا في التصميم وتطوير المواقع.",
                 "gold-feat-1": "شعار + ملصق", "gold-feat-2": "متجر إلكتروني أو موقع أعمال", "gold-feat-3": "لافتة احترافية",
                 "diamond-title": "الباقة الماسية", "diamond-desc": "تجربة الفخامة المطلقة. مزيج شامل من تصميم المواقع والهوية البصرية مع دعم فني دائم.",
@@ -659,4 +600,3 @@
     </script>
 </body>
 </html>
-
