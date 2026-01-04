@@ -89,7 +89,6 @@
             white-space: nowrap;
         }
 
-        /* Fixed Logo sizes for mobile/desktop */
         .logo-img { height: 50px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
         @media (min-width: 768px) {
             .logo-img { height: 70px; }
@@ -132,16 +131,15 @@
             transform: translateX(-5px);
         }
 
-        /* Mobile Header Fix */
         .mobile-header-scroll {
             display: flex;
             overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             padding-bottom: 5px;
         }
         .mobile-header-scroll::-webkit-scrollbar {
-            display: none; /* Chrome, Safari and Opera */
+            display: none;
         }
     </style>
 </head>
@@ -154,7 +152,6 @@
                 <img src="images/logo.png" alt="VERTEX DESIGNS Logo" class="logo-img">
             </div>
             
-            <!-- Desktop/Tablet Menu -->
             <div class="hidden lg:flex space-x-4 text-sm font-medium uppercase tracking-widest items-center">
                 <a href="javascript:void(0)" id="nav-btn-home-desktop" onclick="navigateTo('home')" class="nav-link active-tab" data-key="nav-home">Accueil</a>
                 <a href="javascript:void(0)" id="nav-btn-portfolio-desktop" onclick="navigateTo('portfolio')" class="nav-link" data-key="nav-portfolio">Mon Travail</a>
@@ -163,7 +160,6 @@
                 <button onclick="toggleLanguage()" class="lang-btn">AR/FR</button>
             </div>
 
-            <!-- Mobile Menu (Scrollable horizontal) -->
             <div class="lg:hidden flex items-center gap-2 overflow-hidden">
                 <div class="mobile-header-scroll flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight">
                     <a href="javascript:void(0)" id="nav-btn-home" onclick="navigateTo('home')" class="nav-link active-tab" data-key="nav-home">Accueil</a>
@@ -177,7 +173,6 @@
 
     <!-- PAGE : ACCUEIL -->
     <div id="home" class="page-content active">
-        <!-- Hero Section -->
         <section id="accueil" class="relative min-h-screen flex items-center pt-24 md:pt-20">
             <div class="hero-blob top-0 left-[-10%]"></div>
             <div class="container mx-auto px-6 text-center">
@@ -195,7 +190,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="services" class="py-24 bg-[#0a0a0a]">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-16" data-key="services-title">Mes Services Professionnels</h2>
@@ -225,7 +219,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-24">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="glass-effect p-6 md:p-10 rounded-3xl">
@@ -254,11 +247,10 @@
         </section>
     </div>
 
-    <!-- PAGE : PORTFOLIO / MON TRAVAIL -->
+    <!-- PAGE : PORTFOLIO -->
     <div id="portfolio" class="page-content">
         <section class="pt-32 pb-24 min-h-screen">
             <div class="container mx-auto px-6">
-                <!-- Return Button -->
                 <button onclick="navigateTo('home')" class="return-btn">
                     <i class="fas fa-arrow-left"></i>
                     <span data-key="btn-return">Retour à l'Accueil</span>
@@ -271,6 +263,27 @@
                     <p class="text-gray-400" data-key="portfolio-subtitle">Découvrez quelques-unes de mes réalisations récentes.</p>
                 </div>
 
+                <!-- SECTION : MENUS -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-utensils text-orange-500"></i>
+                        <span data-key="port-menus">Mes Designs de Menu</span>
+                    </h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="portfolio-item aspect-[3/4]">
+                            <img src="images/Menu.png" alt="Menu Design 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-item aspect-[3/4]">
+                            <img src="images/Menu1.png" alt="Menu Design 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="portfolio-item aspect-[3/4]">
+                            <img src="images/Menu2.png" alt="Menu Design 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
                 <!-- SECTION : AFFICHES -->
                 <div class="mb-12">
                     <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
@@ -280,24 +293,12 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div class="portfolio-item aspect-[3/4]">
                             <img src="images/offre emploi .jpg" alt="Affiche Publicitaire" class="w-full h-full object-cover">
-                            <div class="portfolio-overlay">
-                                <h3 class="text-xl font-bold mb-2">Design Professionnel</h3>
-                                <p class="text-gray-300 text-sm">Visuel marketing optimisé pour la communication.</p>
-                            </div>
                         </div>
                         <div class="portfolio-item aspect-[3/4]">
                             <img src="images/VERTEX AFFICHE.png" alt="Best Affiche" class="w-full h-full object-cover">
-                            <div class="portfolio-overlay">
-                                <h3 class="text-xl font-bold mb-2">Best Affiche</h3>
-                                <p class="text-gray-300 text-sm">Design graphique événementiel premium.</p>
-                            </div>
                         </div>
                         <div class="portfolio-item aspect-[3/4]">
                             <img src="images/DMASS AFFICHE.png" alt="DMASS Affiche" class="w-full h-full object-cover">
-                            <div class="portfolio-overlay">
-                                <h3 class="text-xl font-bold mb-2">DMASS Affiche</h3>
-                                <p class="text-gray-300 text-sm">Conception publicitaire professionnelle.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -313,41 +314,33 @@
                     <div class="grid grid-cols-1 gap-8">
                         <div class="portfolio-item h-64 md:h-80">
                             <img src="images/banner3.jpg" alt="Bannière Corporate" class="w-full h-full object-cover object-center">
-                            <div class="portfolio-overlay">
-                                <h3 class="text-xl font-bold">Bannière Stratégique</h3>
-                                <p class="text-gray-300">Format panoramique pour communication digitale.</p>
-                            </div>
                         </div>
                         <div class="portfolio-item h-64 md:h-80">
                             <img src="images/baner.jpeg" alt="Banner Dmass" class="w-full h-full object-cover object-center">
-                            <div class="portfolio-overlay">
-                                <h3 class="text-xl font-bold">Bannière Promotionnelle</h3>
-                                <p class="text-gray-300">Visuel marketing impactant pour campagnes publicitaires.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="section-divider"></div>
 
-                <!-- SECTION : DESIGNS -->
+                <!-- SECTION : DESIGNS DE LOGO -->
                 <div class="mb-12">
                     <h3 class="text-2xl font-bold mb-8 flex items-center gap-3">
                         <i class="fas fa-bezier-curve text-blue-500"></i>
-                        <span data-key="port-designs">Mes Designs</span>
+                        <span data-key="port-designs">Mes Designs de logo</span>
                     </h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div class="portfolio-item aspect-square">
-                            <img src="images/1.jpeg" alt="Design Concept 1" class="w-full h-full object-cover">
+                            <img src="images/1.jpeg" alt="Logo 1" class="w-full h-full object-cover">
                         </div>
                         <div class="portfolio-item aspect-square">
-                            <img src="images/2.jpeg" alt="Design Concept 2" class="w-full h-full object-cover">
+                            <img src="images/2.jpeg" alt="Logo 2" class="w-full h-full object-cover">
                         </div>
                         <div class="portfolio-item aspect-square">
-                            <img src="images/3.jpeg" alt="Design Concept 3" class="w-full h-full object-cover">
+                            <img src="images/3.jpeg" alt="Logo 3" class="w-full h-full object-cover">
                         </div>
                         <div class="portfolio-item aspect-square">
-                            <img src="images/logo3.jpg" alt="Design Concept 4" class="w-full h-full object-cover">
+                            <img src="images/logo3.jpg" alt="Logo 4" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -383,11 +376,10 @@
         </section>
     </div>
 
-    <!-- PAGE : TARIFS DÉTAILLÉS -->
+    <!-- PAGE : TARIFS -->
     <div id="tarifs" class="page-content">
         <section class="pt-32 pb-24 min-h-screen">
             <div class="container mx-auto px-6">
-                <!-- Return Button -->
                 <button onclick="navigateTo('home')" class="return-btn">
                     <i class="fas fa-arrow-left"></i>
                     <span data-key="btn-return">Retour à l'Accueil</span>
@@ -400,8 +392,9 @@
                     <p class="text-gray-400" data-key="price-subtitle">Des prix transparents pour des prestations de haute qualité.</p>
                 </div>
 
+                <!-- GRILLE PRINCIPALE DES TARIFS -->
                 <div class="grid lg:grid-cols-3 gap-8 mb-12">
-                    <!-- Graphisme -->
+                    <!-- DESIGN GRAPHIQUE -->
                     <div class="glass-effect p-8 rounded-3xl border-t-4 border-purple-500 flex flex-col">
                         <div class="flex items-center gap-4 mb-8">
                             <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
@@ -412,46 +405,21 @@
                         <div class="space-y-6 flex-grow">
                             <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
                                 <div><p class="font-bold">Logo Simple</p><p class="text-xs text-gray-400">Fichiers source inclus</p></div>
-                                <span class="text-purple-400 font-bold">30 MAD</span>
+                                <span class="text-purple-400 font-bold">60 MAD</span>
                             </div>
                             <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
                                 <div><p class="font-bold">Flyer A5</p><p class="text-xs text-gray-400">Design Recto</p></div>
-                                <span class="text-purple-400 font-bold">50 MAD</span>
+                                <span class="text-purple-400 font-bold">70 MAD</span>
                             </div>
                             <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
                                 <div><p class="font-bold">Carte de Visite</p><p class="text-xs text-gray-400">Recto-Verso</p></div>
-                                <span class="text-purple-400 font-bold">60 MAD</span>
+                                <span class="text-purple-400 font-bold">100 MAD</span>
                             </div>
                         </div>
                         <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-purple-500/20 border border-purple-500/40 rounded-xl font-bold hover:bg-purple-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
                     </div>
 
-                    <!-- Présentations -->
-                    <div class="glass-effect p-8 rounded-3xl border-t-4 border-pink-500 flex flex-col">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-desktop text-pink-500"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold" data-key="p2-main-title">Présentations</h3>
-                        </div>
-                        <div class="space-y-6 flex-grow">
-                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
-                                <div><p class="font-bold">Pack Base (5 Slides)</p><p class="text-xs text-gray-400">Conception modèle</p></div>
-                                <span class="text-pink-400 font-bold">35 MAD</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
-                                <div><p class="font-bold">Pack Standard (10 Slides)</p><p class="text-xs text-gray-400">Design & Icônes</p></div>
-                                <span class="text-pink-400 font-bold">45 MAD</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
-                                <div><p class="font-bold">Pack Expert (30+ Slides)</p><p class="text-xs text-gray-400">Optimisation complète</p></div>
-                                <span class="text-pink-400 font-bold">60 MAD</span>
-                            </div>
-                        </div>
-                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-pink-500/20 border border-pink-500/40 rounded-xl font-bold hover:bg-pink-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
-                    </div>
-
-                    <!-- Web -->
+                    <!-- PRÉSENTATIONS (Adapté aux services web ici pour matcher l'ordre) -->
                     <div class="glass-effect p-8 rounded-3xl border-t-4 border-blue-500 flex flex-col">
                         <div class="flex items-center gap-4 mb-8">
                             <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
@@ -462,22 +430,47 @@
                         <div class="space-y-6 flex-grow">
                             <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
                                 <div><p class="font-bold" data-key="web-p1">Site One-Page</p><p class="text-xs text-gray-400" data-key="web-d1">Vitrine / Portfolio</p></div>
-                                <span class="text-blue-400 font-bold">250 MAD</span>
+                                <span class="text-blue-400 font-bold">900 MAD</span>
                             </div>
                             <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
                                 <div><p class="font-bold" data-key="web-p2">Site Business</p><p class="text-xs text-gray-400" data-key="web-d2">Multi-pages & SEO</p></div>
-                                <span class="text-blue-400 font-bold">300 MAD</span>
+                                <span class="text-blue-400 font-bold">1100 MAD</span>
                             </div>
                             <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
                                 <div><p class="font-bold" data-key="web-p3">Site E-commerce</p><p class="text-xs text-gray-400" data-key="web-d3">Boutique complète</p></div>
-                                <span class="text-blue-400 font-bold">300 MAD</span>
+                                <span class="text-blue-400 font-bold">1200 MAD</span>
                             </div>
                         </div>
-                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-blue-500/20 border border-purple-500/40 rounded-xl font-bold hover:bg-blue-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
+                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-blue-500/20 border border-blue-500/40 rounded-xl font-bold hover:bg-blue-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
+                    </div>
+
+                    <!-- PRÉSENTATIONS (Ancien bloc converti en support additionnel ou expert) -->
+                    <div class="glass-effect p-8 rounded-3xl border-t-4 border-pink-500 flex flex-col">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-desktop text-pink-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold" data-key="p2-main-title">Présentations</h3>
+                        </div>
+                        <div class="space-y-6 flex-grow">
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Pack Base (5 Slides)</p><p class="text-xs text-gray-400">Design Professionnel</p></div>
+                                <span class="text-pink-400 font-bold">40 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Pack Standard (10 Slides)</p><p class="text-xs text-gray-400">Design & Icônes</p></div>
+                                <span class="text-pink-400 font-bold">70 MAD</span>
+                            </div>
+                            <div class="flex justify-between items-center p-4 rounded-xl bg-white/5 card-hover transition">
+                                <div><p class="font-bold">Pack Expert (30+ Slides)</p><p class="text-xs text-gray-400">Optimisation complète</p></div>
+                                <span class="text-pink-400 font-bold">100 MAD</span>
+                            </div>
+                        </div>
+                        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="mt-8 w-full py-3 bg-pink-500/20 border border-pink-500/40 rounded-xl font-bold hover:bg-pink-500 hover:text-white transition uppercase text-sm tracking-widest" data-key="btn-order">Commander</button>
                     </div>
                 </div>
 
-                <!-- PACKS PREMIUM -->
+                <!-- BAQUETTES PREMIUM (PACKS) -->
                 <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     <!-- GOLDEN PACK -->
                     <div class="relative p-[2px] rounded-3xl bg-gradient-to-r from-yellow-600 via-yellow-200 to-yellow-600 overflow-hidden shadow-[0_0_30px_rgba(251,191,36,0.15)]">
@@ -493,7 +486,7 @@
                                 <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-yellow-500"></i> <span data-key="gold-feat-3">Bannière professionnelle</span></li>
                             </ul>
                             <div class="text-center">
-                                <p class="text-3xl font-black text-white mb-4">350 <span class="text-yellow-500 text-xl">MAD</span></p>
+                                <p class="text-3xl font-black text-white mb-4">1300 <span class="text-yellow-500 text-xl">MAD</span></p>
                                 <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="w-full py-3 bg-yellow-500 text-black font-black rounded-xl hover:bg-yellow-400 transition uppercase text-[10px] tracking-widest" data-key="btn-order-gold">Commander le Pack</button>
                             </div>
                         </div>
@@ -514,7 +507,7 @@
                                 <li class="flex items-center gap-3 text-xs font-medium"><i class="fas fa-check-circle text-cyan-400"></i> <span data-key="diamond-feat-4">Maintenance & Updates incluses</span></li>
                             </ul>
                             <div class="text-center">
-                                <p class="text-3xl font-black text-white mb-4">500 <span class="text-cyan-400 text-xl">MAD</span></p>
+                                <p class="text-3xl font-black text-white mb-4">1500 <span class="text-cyan-400 text-xl">MAD</span></p>
                                 <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="w-full py-3 bg-cyan-500 text-black font-black rounded-xl hover:bg-cyan-400 transition uppercase text-[10px] tracking-widest" data-key="btn-order-diamond">Commander l'Excellence</button>
                             </div>
                         </div>
@@ -524,7 +517,7 @@
         </section>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="py-12 border-t border-white/5">
         <div class="container mx-auto px-6 text-center">
             <p class="text-gray-500 mb-4">&copy; 2024 VERTEX DESIGNS. <span data-key="footer-rights">Tous droits réservés.</span></p>
@@ -544,13 +537,14 @@
                 "hero-desc": "Graphisme, Développement Web et Présentations Professionnelles. Des solutions digitales créatives pour booster votre projet.",
                 "services-title": "Mes Services Professionnels", "s1-title": "Design Graphique", "s2-title": "Développement Web", "s3-title": "Présentations",
                 "contact-title": "Prêt à commencer ?", "btn-send": "Envoyer ma demande", "portfolio-title-1": "Mon", "portfolio-title-2": "Portfolio",
-                "port-affiches": "Mes Affiches", "port-banners": "Mes Bannières", "port-designs": "Mes Designs", "port-docs": "Documents & PDF",
+                "port-menus": "Mes Designs de Menu",
+                "port-affiches": "Mes Affiches", "port-banners": "Mes Bannières", "port-designs": "Mes Designs de logo", "port-docs": "Documents & PDF",
                 "doc-title": "My Presentation", "doc-desc": "Présentation Entrepreneuriale",
                 "gold-title": "Golden Pack", "gold-desc": "La solution ultime pour lancer votre marque. Ce pack fusionne notre expertise en Design et en Développement Web.",
                 "gold-feat-1": "Logo + Affiche", "gold-feat-2": "Site Web E-commerce ou Business", "gold-feat-3": "Bannière professionnelle",
                 "diamond-title": "Diamond Pack", "diamond-desc": "L'expérience prestige absolue. Un mix total de web design, identité visuelle complète et assistance illimitée.",
                 "diamond-feat-1": "Site Web complète", "diamond-feat-2": "Logo + Affiche + carte visit", "diamond-feat-3": "Support Prioritaire 24h/24 & 7j/7", "diamond-feat-4": "Maintenance & Updates incluses",
-                "gold-price-label": "Prix Spécial", "btn-order-gold": "Commander le Pack", "btn-order-diamond": "Commander l'Excellence", "footer-rights": "Tous droits réservés.",
+                "btn-order-gold": "Commander le Pack", "btn-order-diamond": "Commander l'Excellence", "footer-rights": "Tous droits réservés.",
                 "input-name": "Nom", "input-phone": "Numéro de téléphone", "input-msg": "Décrivez votre projet...", "opt-default": "Type de service", "opt-gold": "Golden Pack",
                 "web-p1": "Site One-Page", "web-d1": "Vitrine / Portfolio", "web-p2": "Site Business", "web-d2": "Multi-pages & SEO", "web-p3": "Site E-commerce", "web-d3": "Boutique complète"
             },
@@ -561,13 +555,14 @@
                 "hero-desc": "جرافيك ديزاين، تطوير المواقع، وعروض تقديمية احترافية. حلول رقمية إبداعية لتعزيز مشروعك.",
                 "services-title": "خدماتي الاحترافية", "s1-title": "تصميم الجرافيك", "s2-title": "تطوير الويب", "s3-title": "العروض التقديمية",
                 "contact-title": "هل أنت مستعد للبدء؟", "btn-send": "إرسال الطلب", "portfolio-title-1": "معرض", "portfolio-title-2": "أعمالي",
-                "port-affiches": "ملصقاتي", "port-banners": "لافتات إعلانية", "port-designs": "تصاميمي", "port-docs": "ملفات و PDF",
+                "port-menus": "تصاميم المنيو",
+                "port-affiches": "ملصقاتي", "port-banners": "لافتات إعلانية", "port-designs": "تصاميم الشعار", "port-docs": "ملفات و PDF",
                 "doc-title": "عرضي التقديمي", "doc-desc": "مشروع ريادي",
                 "gold-title": "الباقة الذهبية", "gold-desc": "الحل الأمثل لإطلاق علامتك التجارية. تجمع هذه الباقة بين خبرتنا في التصميم وتطوير المواقع.",
                 "gold-feat-1": "شعار + ملصق", "gold-feat-2": "متجر إلكتروني أو موقع أعمال", "gold-feat-3": "لافتة احترافية",
                 "diamond-title": "الباقة الماسية", "diamond-desc": "تجربة الفخامة المطلقة. مزيج شامل من تصميم المواقع والهوية البصرية مع دعم فني دائم.",
                 "diamond-feat-1": "موقع ويب كامل", "diamond-feat-2": "شعار + ملصق + بطاقة عمل", "diamond-feat-3": "دعم فني ذو أولوية 24/7", "diamond-feat-4": "الصيانة والتحديثات مشمولة",
-                "gold-price-label": "سعر خاص", "btn-order-gold": "طلب الباقة الذهبية", "btn-order-diamond": "طلب التميز الماسي", "footer-rights": "جميع الحقوق محفوظة.",
+                "btn-order-gold": "طلب الباقة الذهبية", "btn-order-diamond": "طلب التميز الماسي", "footer-rights": "جميع الحقوق محفوظة.",
                 "input-name": "الاسم", "input-phone": "رقم الهاتف", "input-msg": "صف مشروعك...", "opt-default": "نوع الخدمة", "opt-gold": "الباقة الذهبية",
                 "web-p1": "موقع صفحة واحدة", "web-d1": "موقع تعريفي / بورتفوليو", "web-p2": "موقع أعمال", "web-d2": "متعدد الصفحات و SEO", "web-p3": "متجر إلكتروني", "web-d3": "متجر كامل"
             }
@@ -594,12 +589,9 @@
                 targetPage.classList.add('active'); 
                 window.scrollTo(0, 0); 
             }
-            // Update active state for both mobile and desktop menus
             document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active-tab'));
-            
             const activeBtnMob = document.getElementById('nav-btn-' + pageId);
             if(activeBtnMob) activeBtnMob.classList.add('active-tab');
-            
             const activeBtnDesk = document.getElementById('nav-btn-' + pageId + '-desktop');
             if(activeBtnDesk) activeBtnDesk.classList.add('active-tab');
         }
